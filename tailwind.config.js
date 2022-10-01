@@ -1,5 +1,5 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme")
+const colors = require("tailwindcss/colors")
 
 module.exports = {
   mode: "jit",
@@ -10,9 +10,12 @@ module.exports = {
       colors: {
         trueGray: colors.trueGray,
       },
+      backgroundImage: {
+        blackHero: "url(/img/black_illus_main.jpeg)",
+      },
     },
     fontFamily: {
-      sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
       stock: [defaultTheme.fontFamily.sans],
     },
   },
@@ -20,4 +23,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
-};
+}

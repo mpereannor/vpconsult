@@ -6,50 +6,44 @@ import userOneImg from "../public/img/user1.jpg"
 import userTwoImg from "../public/img/user2.jpg"
 import userThreeImg from "../public/img/user3.jpg"
 
-export default function Testimonials() {
+export default function Stats() {
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
-            <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+            <p className="text-2xl leading-normal">
+              Years of <Mark>expertise</Mark>
+              in the West African Market
             </p>
 
-            <Avatar
-              image={userOneImg}
-              name="Sarah Steiner"
-              title="VP Sales at Google"
-            />
+            <p className="text-4xl font-bold leading-snug tracking-tight text-blue-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+              12 YRS
+            </p>
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
+              Lorem Ipsum <Mark>Lorem Ipsum</Mark>
+              Lorem Ipsum
             </p>
 
-            <Avatar
-              image={userTwoImg}
-              name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
-            />
+            <p className="text-4xl font-bold leading-snug tracking-tight text-blue-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+              1800
+            </p>
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I've seen. I
-              would use this for anything.
+              Lorem Ipsum <Mark>Lorem Ipsum</Mark>
+              Lorem Ipsum
             </p>
 
-            <Avatar
-              image={userThreeImg}
-              name="Gabrielle Winn"
-              title="Co-founder of Acme Inc"
-            />
+            <p className="text-4xl font-bold leading-snug tracking-tight text-blue-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+              12%
+            </p>
           </div>
         </div>
       </div>

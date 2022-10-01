@@ -5,55 +5,55 @@ import {
   DeviceMobileIcon,
   AdjustmentsIcon,
   SunIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/outline"
 
-import benefitOneImg from "../public/img/benefit-one.png";
-import benefitTwoImg from "../public/img/benefit-two.png";
+import benefitOneImg from "../public/img/benefit-one.png"
+import benefitTwoImg from "../public/img/benefit-two.png"
 
 const benefitOne = {
-  title: "Highlight your benefits",
-  desc: "You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.",
+  title: "Our Services",
+  desc: "",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Understand your customers",
-      desc: "Then explain the first point breifly in one or two lines.",
+      title: "Advisory Business Serivce",
+      desc: "Lorem  Ipsum lorem ipsum  Ipsum lorem ipsum  Ipsum lorem ipsum  Ipsum lorem ipsum ",
       icon: <EmojiHappyIcon />,
     },
     {
-      title: "Improve acquisition",
-      desc: "Here you can add the next benefit point.",
+      title: "Project Finance",
+      desc: " Ipsum lorem ipsum  Ipsum lorem ipsum  Ipsum lorem ipsum ",
       icon: <ChartSquareBarIcon />,
     },
     {
-      title: "Drive customer retention",
-      desc: "This will be your last bullet point in this section.",
+      title: "MT103 Wire Transfer",
+      desc: "T Ipsum lorem ipsum  Ipsum lorem ipsum  Ipsum lorem ipsum ",
       icon: <CursorClickIcon />,
     },
   ],
-};
+}
 
 const benefitTwo = {
-  title: "Offer more benefits here",
-  desc: "You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.",
+  title: "VP Consult Gh Manifesto ",
+  desc: "We are a result oriented company, that executes with the customer satisfaction as the ultimate goal.",
   image: benefitTwoImg,
   bullets: [
     {
-      title: "Mobile Responsive Template",
-      desc: "Nextly is designed as a mobile first responsive template.",
+      title: "Our Vision",
+      desc: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
       icon: <DeviceMobileIcon />,
     },
     {
-      title: "Powered by Next.js & TailwindCSS",
-      desc: "This template is powered by latest technologies and tools.",
+      title: "Our Mission ",
+      desc: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
       icon: <AdjustmentsIcon />,
     },
     {
-      title: "Dark & Light Mode",
-      desc: "Nextly comes with a zero-config light & dark mode. ",
+      title: "Our Values",
+      desc: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
       icon: <SunIcon />,
     },
   ],
-};
+}
 
-export { benefitOne, benefitTwo };
+export { benefitOne, benefitTwo }

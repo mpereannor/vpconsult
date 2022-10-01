@@ -1,9 +1,10 @@
-import Image from "next/image";
-import React from "react";
-import Container from "./container";
+import Image from "next/image"
+import React from "react"
+import Container from "./container"
+import blackLady from "../public/img/black_illus.jpeg"
 
 export default function Benefits(props) {
-  const { data } = props;
+  const { data } = props
 
   return (
     <>
@@ -11,12 +12,13 @@ export default function Benefits(props) {
         <div
           className={`flex items-center justify-center w-full lg:w-1/2 ${
             props.imgPos === "right" ? "lg:order-1" : ""
-          }`}>
+          }`}
+        >
           <div>
             <Image
-              src={data.image}
-              width="521"
-              height="482"
+              src={blackLady}
+              // width="521"
+              // height="482"
               alt="Benefits"
               layout="intrinsic"
               placeholder="blur"
@@ -27,16 +29,17 @@ export default function Benefits(props) {
         <div
           className={`flex flex-wrap items-center w-full lg:w-1/2 ${
             props.imgPos === "right" ? "lg:justify-end" : ""
-          }`}>
+          }`}
+        >
           <div>
             <div className="flex flex-col w-full mt-4">
               <h3 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white">
                 {data.title}
               </h3>
 
-              <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
+              {/* <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
                 {data.desc}
-              </p>
+              </p> */}
             </div>
 
             <div className="w-full mt-5">
@@ -50,16 +53,16 @@ export default function Benefits(props) {
         </div>
       </Container>
     </>
-  );
+  )
 }
 
 function Benefit(props) {
   return (
     <>
       <div className="flex items-start mt-8 space-x-3">
-        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-indigo-500 rounded-md w-11 h-11 ">
+        <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-blue-500 rounded-md w-11 h-11 ">
           {React.cloneElement(props.icon, {
-            className: "w-7 h-7 text-indigo-50",
+            className: "w-7 h-7 text-blue-50",
           })}
         </div>
         <div>
@@ -72,5 +75,5 @@ function Benefit(props) {
         </div>
       </div>
     </>
-  );
+  )
 }
