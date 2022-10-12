@@ -15,6 +15,7 @@ export default function Navbar() {
               <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
                 <Link href="/">
                   <a className="flex items-center space-x-2 text-2xl font-medium text-blue-500 dark:text-gray-100">
+                    {/* <Image src={}/> */}
                     <span>VP Consult Gh</span>
                   </a>
                 </Link>
