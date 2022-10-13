@@ -3,12 +3,11 @@ import Hero from "../components/hero"
 import Navbar from "../components/navbar"
 import SectionTitle from "../components/sectionTitle"
 import client from "../lib/sanity"
-
 import { benefitOne, benefitTwo } from "../components/data"
 import Video from "../components/video"
 import Benefits from "../components/benefits"
+import Manifesto from "../components/manifesto"
 import Footer from "../components/footer"
-import Testimonials from "../components/testimonials"
 import Cta from "../components/cta"
 import Faq from "../components/faq"
 import PopupWidget from "../components/popupWidget"
@@ -18,6 +17,9 @@ import Stats from "../components/stats"
 const homePageQuery = `*\[_type == "homepage"\][0] {
   title,
   subtitle,
+  about,
+  manifesto,
+  faq,
   "ctaUrl": cta {
     current
         },
@@ -26,7 +28,8 @@ const homePageQuery = `*\[_type == "homepage"\][0] {
   }
 }`
 
-const servicesPageQuery = `*[_type == "services"]{ 
+const servicesPageQuery = `*[_type == "services"] | order(_createdAt asc)
+{ 
   servicesTitle,
  listOfServices[]
 }`
@@ -53,7 +56,6 @@ export default function Home({ data, servicesData }) {
   const { homePageData } = data
   const { servicesPageData } = servicesData
   console.log("agape", { homePageData })
-  console.log("kiko", { servicesPageData })
   return (
     <>
       <Head>
@@ -63,38 +65,25 @@ export default function Home({ data, servicesData }) {
       </Head>
 
       <Navbar />
-      <Hero />
+      <Hero subtitle={homePageData.subtitle} />
       <Stats />
 
-      <SectionTitle title=" Why you should work with us">
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-      </SectionTitle>
-      <Benefits data={benefitOne} servicesData={ servicesPageData} />
-      <Benefits imgPos="right" data={benefitTwo} />
-      <SectionTitle
-        pretitle="Watch how we offer our consulting services"
-        title="Join us on the VP Consult Journey "
-      >
+      <SectionTitle title=" Our Services"></SectionTitle>
+      <Benefits imgPos="left" servicesData={servicesPageData.slice(0, 2)} />
+      <Benefits imgPos="right" servicesData={servicesPageData.slice(2, 4)} />
+      <Benefits imgPos="left" servicesData={servicesPageData.slice(4, 8)} />
+      <SectionTitle title="Join us on the VP Consult Journey ">
         {homePageData.subtitle}
+        <Manifesto manifestoData={homePageData.manifesto} />
       </SectionTitle>
-      <Video />
+
       <SectionTitle
-        pretitle="Testimonials"
-        title="Here's what our customers said"
-      >
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum
-      </SectionTitle>
-      <Testimonials />
-      <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-      </SectionTitle>
-      <Faq />
+        pretitle="FAQ"
+        title="Frequently Asked Questions"
+      ></SectionTitle>
+      <Faq faq={homePageData.faq} />
       <Cta />
-      <Footer />
+      <Footer about={homePageData.about} />
       <PopupWidget />
     </>
   )

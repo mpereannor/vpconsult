@@ -3,7 +3,7 @@ import Image from "next/image"
 import React from "react"
 import Container from "./container"
 
-export default function Footer() {
+export default function Footer({ about }) {
   const navigation = ["Product", "Features", "Pricing", "Company", "Blog"]
   const legal = ["Terms", "Privacy", "Legal"]
   return (
@@ -21,8 +21,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              VP Consult Gh is a renowned consultancy in Ghana that offers
-              quality services.{" "}
+              {about}{" "}
             </div>
           </div>
 
