@@ -4,10 +4,12 @@ import Navbar from "../components/navbar"
 import SectionTitle from "../components/sectionTitle"
 import Manifesto from "../components/manifesto"
 import PopupWidget from "../components/popupWidget"
+import Benefits from "../components/benefits"
+import Services from "../components/service"
 
-export default function About({ aboutData }) {
-  const { aboutPageData } = aboutData
-  console.log("about", aboutPageData)
+export default function About({ servicesData }) {
+  const { servicesPageData } = servicesData
+  console.log("services", servicesPageData)
   return (
     <>
       <Head>
@@ -16,30 +18,30 @@ export default function About({ aboutData }) {
         <link rel="icon" href="/public/vpconsultgh.svg" />
       </Head>
       <Navbar />
-      <SectionTitle
-        title="Join us on the VP Consult Journey "
-      >
-        {aboutPageData.aboutFull}
-      </SectionTitle>
+      <SectionTitle title=" Our Services"></SectionTitle>
+      <Services servicesData={servicesPageData} />
       <PopupWidget />
     </>
   )
 }
 //create a query called homePageQuery
-const aboutQuery = `*\[_type == "homepage"\][0] {
-    aboutFull
-  }`
+const servicesPageQuery = `*[_type == "services"] | order(_createdAt asc)
+{ 
+  servicesTitle,
+ listOfServices[], 
+ serviceDetail
+}`
 
 export async function getStaticProps() {
-  const aboutPageData = await client.fetch(aboutQuery)
+  const servicesPageData = await client.fetch(servicesPageQuery)
 
-  const aboutData = {
-    aboutPageData,
+  const servicesData = {
+    servicesPageData,
   }
 
   return {
     props: {
-      aboutData,
+      servicesData,
     },
     revalidate: 1,
   }
