@@ -1,6 +1,8 @@
 import Link from "next/link"
 import ThemeChanger from "./DarkSwitch"
 import { Disclosure } from "@headlessui/react"
+import { createPopper } from "@popperjs/core"
+import { useState, createRef } from "react"
 
 export default function Navbar() {
   const navigation = ["TEAM", "BLOG", "CONTACT"]
@@ -87,7 +89,7 @@ export default function Navbar() {
             <li className="mr-3 nav__item">
               <Link href="/services">
                 <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
-                  SERVICES
+                  <Dropdown item={"SERVICESS"} />
                 </a>
               </Link>
             </li>
@@ -114,5 +116,63 @@ export default function Navbar() {
         </div>
       </nav>
     </div>
+  )
+}
+
+const Dropdown = ({ item }) => {
+  // dropdown props
+  const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false)
+  const btnDropdownRef = createRef()
+  const popoverDropdownRef = createRef()
+  const openDropdownPopover = () => {
+    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+      placement: "top",
+    })
+    setDropdownPopoverShow(true)
+  }
+  const closeDropdownPopover = () => {
+    setDropdownPopoverShow(false)
+  }
+  return (
+    <>
+      <div className="flex flex-wrap">
+        <div className="w-full sm:w-6/12 md:w-4/12 px-4">
+          <div className="relative inline-flex align-middle w-full">
+            <div
+              ref={btnDropdownRef}
+              onHover={() => {
+                dropdownPopoverShow
+                  ? closeDropdownPopover()
+                  : openDropdownPopover()
+              }}
+            >
+              {item}
+            </div>
+            <div
+              ref={popoverDropdownRef}
+              className={
+                (dropdownPopoverShow ? "block " : "hidden ") +
+                "bg-blueGray-500 text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 min-w-48"
+              }
+            >
+              <a
+                href="#pablo"
+                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
+                onClick={(e) => e.preventDefault()}
+              >
+                Action
+              </a>
+              <a
+                href="#pablo"
+                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
+                onClick={(e) => e.preventDefault()}
+              >
+                done
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
