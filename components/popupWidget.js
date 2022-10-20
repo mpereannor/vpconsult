@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useForm, useWatch } from "react-hook-form"
 import { Disclosure, Transition } from "@headlessui/react"
 
-export default function PopupWidget() {
+export default function PopupWidget({ pos}) {
   const {
     register,
     handleSubmit,
@@ -51,7 +51,7 @@ export default function PopupWidget() {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button className="fixed z-40 flex items-center justify-center transition duration-300 bg-blue-500 rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-blue-600 focus:bg-blue-600 ease">
+            <Disclosure.Button className={`fixed z-40 flex items-center justify-center transition duration-300 bg-blue-500 rounded-full shadow-lg ${pos==="left" ? "left-5" : "right-5"} bottom-5 w-14 h-14 focus:outline-none hover:bg-blue-600 focus:bg-blue-600 ease`}>
               <span className="sr-only">Open Contact form Widget</span>
               <Transition
                 show={!open}
@@ -103,7 +103,14 @@ export default function PopupWidget() {
               </Transition>
             </Disclosure.Button>
             <Transition
-              className="fixed  z-50 bottom-[100px] top-0 right-0  left-0 sm:top-auto sm:right-5 sm:left-auto"
+              className="
+              fixed
+              z-50 
+              bottom-[100px]
+              top-0 
+              right-0  
+              left-0 
+              sm:top-auto sm:right-5 sm:left-auto"
               enter="transition duration-200 transform ease"
               enterFrom="opacity-0 translate-y-5"
               leave="transition duration-200 transform ease"
