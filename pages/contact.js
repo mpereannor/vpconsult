@@ -6,9 +6,11 @@ import Manifesto from "../components/manifesto"
 import PopupWidget from "../components/popupWidget"
 import Benefits from "../components/benefits"
 import Services from "../components/service"
+import ContactDetails from "../components/contactDetails"
 
-export default function About({ servicesData }) {
-  const { servicesPageData } = servicesData
+export default function Contact({ infoData }) {
+  const { infoPageData } = infoData
+  console.log("papa", infoPageData)
   return (
     <>
       <Head>
@@ -17,30 +19,27 @@ export default function About({ servicesData }) {
         <link rel="icon" href="/public/vpconsultgh.svg" />
       </Head>
       <Navbar />
-      <SectionTitle title=" Our Services"></SectionTitle>
-      <Services servicesData={servicesPageData} />
+      <ContactDetails infoPageData={infoPageData} />
       <PopupWidget />
     </>
   )
 }
-//create a query called homePageQuery
-const servicesPageQuery = `*[_type == "services"] | order(_createdAt asc)
+const infoPageQuery = `*[_type == "info"] 
 { 
-  servicesTitle,
- listOfServices[], 
- serviceDetail
+ contactMessage,
+ addressInfo
 }`
 
 export async function getStaticProps() {
-  const servicesPageData = await client.fetch(servicesPageQuery)
+  const infoPageData = await client.fetch(infoPageQuery)
 
-  const servicesData = {
-    servicesPageData,
+  const infoData = {
+    infoPageData,
   }
 
   return {
     props: {
-      servicesData,
+      infoData,
     },
     revalidate: 1,
   }

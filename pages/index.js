@@ -55,7 +55,6 @@ export async function getStaticProps() {
 export default function Home({ data, servicesData }) {
   const { homePageData } = data
   const { servicesPageData } = servicesData
-  console.log("agape", { homePageData })
   return (
     <>
       <Head>
@@ -64,7 +63,7 @@ export default function Home({ data, servicesData }) {
         <link rel="icon" href="/public/vpconsultgh.svg" />
       </Head>
 
-      <Navbar />
+      <Navbar subMenu={servicesPageData} />
       <Hero subtitle={homePageData.subtitle} />
       <Stats />
 

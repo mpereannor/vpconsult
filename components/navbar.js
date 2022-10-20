@@ -4,8 +4,17 @@ import { Disclosure } from "@headlessui/react"
 import { createPopper } from "@popperjs/core"
 import { useState, createRef } from "react"
 
+const subNavigation = [
+  "Management Consultancy",
+  "Business Strategy Consulting",
+  "Finance and Project Funding",
+  "Sales and Marketing",
+  "Operations",
+  "Commodity Trade Finance",
+  "Trade and Project Funding",
+]
 export default function Navbar() {
-  const navigation = ["TEAM", "BLOG", "CONTACT"]
+  const navigation = ["TEAM", "BLOG"]
 
   return (
     <div className="w-full">
@@ -81,22 +90,29 @@ export default function Navbar() {
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             <li className="mr-3 nav__item">
               <Link href="/about">
-                <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
+                <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline  dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
                   ABOUT
                 </a>
               </Link>
             </li>
             <li className="mr-3 nav__item">
               <Link href="/services">
-                <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
-                  <Dropdown item={"SERVICESS"} />
+                <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline  dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
+                  <Dropdown item={"SERVICES"} />
+                </a>
+              </Link>
+            </li>
+            <li className="mr-3 nav__item">
+              <Link href="/contact">
+                <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline  dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
+                  CONTACT{" "}
                 </a>
               </Link>
             </li>
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
                 <Link href="/">
-                  <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
+                  <a className="inline-block px-4 py-2 text-md font-normal text-gray-800 no-underline  dark:text-gray-200 hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800">
                     {menu}
                   </a>
                 </Link>
@@ -140,7 +156,7 @@ const Dropdown = ({ item }) => {
           <div className="relative inline-flex align-middle w-full">
             <div
               ref={btnDropdownRef}
-              onHover={() => {
+              onClick={() => {
                 dropdownPopoverShow
                   ? closeDropdownPopover()
                   : openDropdownPopover()
@@ -152,23 +168,20 @@ const Dropdown = ({ item }) => {
               ref={popoverDropdownRef}
               className={
                 (dropdownPopoverShow ? "block " : "hidden ") +
-                "bg-blueGray-500 text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 min-w-48"
+                "bg-blue-100 text-base z-50 float-left py-2  mr-3 nav__item list-none text-left  shadow-md mt-1 min-w-48"
               }
             >
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={(e) => e.preventDefault()}
-              >
-                Action
-              </a>
-              <a
-                href="#pablo"
-                className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white"
-                onClick={(e) => e.preventDefault()}
-              >
-                done
-              </a>
+              {subNavigation.map((sub, index) => (
+                <a
+                  key={index}
+                  href="#pablo"
+                  className="inline-block 
+                  px-2 py-2 text-sm font-normal  text-gray-800 dark:text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 focus:text-blue-500 focus:bg-blue-100 focus:outline-none dark:focus:bg-gray-800 ease-linear transition-all duration-150 hover:shadow-md"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  {sub}
+                </a>
+              ))}
             </div>
           </div>
         </div>
