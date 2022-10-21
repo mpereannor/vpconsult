@@ -6,6 +6,7 @@ import Manifesto from "../components/manifesto"
 import PopupWidget from "../components/popupWidget"
 import Benefits from "../components/benefits"
 import Services from "../components/service"
+import Footer from "../components/footer"
 
 export default function About({ servicesData }) {
   const { servicesPageData } = servicesData
@@ -19,6 +20,7 @@ export default function About({ servicesData }) {
       <Navbar />
       <SectionTitle title=" Our Services"></SectionTitle>
       <Services servicesData={servicesPageData} />
+      <Footer />
       <PopupWidget />
     </>
   )

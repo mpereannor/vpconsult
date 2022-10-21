@@ -3,7 +3,9 @@ import Head from "next/head"
 import Navbar from "../components/navbar"
 import SectionTitle from "../components/sectionTitle"
 import Manifesto from "../components/manifesto"
+import Testimonials from "../components/testimonials"
 import PopupWidget from "../components/popupWidget"
+import Footer from "../components/footer"
 
 export default function About({ aboutData }) {
   const { aboutPageData } = aboutData
@@ -16,18 +18,20 @@ export default function About({ aboutData }) {
         <link rel="icon" href="/public/vpconsultgh.svg" />
       </Head>
       <Navbar />
-      <SectionTitle
-        title="Join us on the VP Consult Journey "
-      >
+      <SectionTitle title="Join us on the VP Consult Journey ">
         {aboutPageData.aboutFull}
       </SectionTitle>
+      <Manifesto manifestoData={aboutPageData.manifesto} />
+      <Testimonials />
+      <Footer />
       <PopupWidget />
     </>
   )
 }
 //create a query called homePageQuery
 const aboutQuery = `*\[_type == "homepage"\][0] {
-    aboutFull
+    aboutFull,
+    manifesto
   }`
 
 export async function getStaticProps() {

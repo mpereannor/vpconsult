@@ -7,6 +7,7 @@ import PopupWidget from "../components/popupWidget"
 import Benefits from "../components/benefits"
 import Services from "../components/service"
 import ContactDetails from "../components/contactDetails"
+import Footer from "../components/footer"
 
 export default function Contact({ infoData }) {
   const { infoPageData } = infoData
@@ -20,6 +21,7 @@ export default function Contact({ infoData }) {
       </Head>
       <Navbar />
       <ContactDetails infoPageData={infoPageData} />
+      <Footer />
       <PopupWidget />
     </>
   )

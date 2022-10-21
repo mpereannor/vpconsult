@@ -14,7 +14,7 @@ const subNavigation = [
   "Trade and Project Funding",
 ]
 export default function Navbar() {
-  const navigation = ["TEAM", "BLOG"]
+  const navigation = ["BLOG"]
 
   return (
     <div className="w-full">
